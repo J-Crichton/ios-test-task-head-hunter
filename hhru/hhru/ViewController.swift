@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     var vacancies = [Vacancy]()
     var page = 0
-    var cellHeights = [IndexPath : CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +101,6 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cellHeights[indexPath] = cell.frame.height
         let lastVacancy = vacancies.count - 1
         if indexPath.row == lastVacancy {
             let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -120,11 +118,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let cellHeight = cellHeights[indexPath] {
-            return cellHeight
-        } else {
-            return UITableViewAutomaticDimension
-        }
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
