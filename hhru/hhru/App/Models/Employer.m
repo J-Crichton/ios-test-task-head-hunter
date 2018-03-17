@@ -31,7 +31,7 @@
 
     if ([self isValid:[objectData objectForKey:@"logo_urls"]]) {
         NSDictionary *urls = [objectData objectForKey:@"logo_urls"];
-        self.logo = [urls objectForKey:@"original"];
+        self.logo = [urls objectForKey:@"240"];
     }
     
     objectData = nil;

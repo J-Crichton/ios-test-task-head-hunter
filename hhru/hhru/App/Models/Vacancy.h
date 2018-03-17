@@ -23,5 +23,7 @@
 + (Vacancy *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
+- (NSString *)formattedSalaryArea;
+
 
 @end

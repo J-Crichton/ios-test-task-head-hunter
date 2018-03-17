@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "VacanciesViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  
+    
+    VacanciesViewController *vc = [[VacanciesViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = nc;
+
     return YES;
 }
 

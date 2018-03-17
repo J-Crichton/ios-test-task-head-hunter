@@ -7,7 +7,6 @@
 //
 
 #import "UIView+ConcisePureLayout.h"
-#import <ChameleonFramework/UIColor+Chameleon.h>
 #import "Reachability.h"
 #import "Connection.h"
 #import "SVProgressHUD.h"

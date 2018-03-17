@@ -32,6 +32,11 @@
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
     self.publishedAt = [formatter dateFromString:[self stringValueForKey:@"published_at"]];
     
+    if ([self isValid:[objectData objectForKey:@"salary"]]) {
+        NSDictionary *salary = [objectData objectForKey:@"salary"];
+        self.salary = [Salary instanceFromDictionary:salary];
+    }
+
     if ([self isValid:[objectData objectForKey:@"area"]]) {
         NSDictionary *area = [objectData objectForKey:@"area"];
         self.area = [Area instanceFromDictionary:area];
@@ -46,4 +51,39 @@
 }
 
 
+
+- (NSString *)formattedSalaryArea {
+    
+    NSString *str = @"";
+    
+    if (self.salary != nil) {
+        str = [str stringByAppendingString:[self.salary formattedRange]];
+    }
+    
+    if (self.area) {
+        if (str.length) {
+            str = [str stringByAppendingString:[NSString stringWithFormat:@"・%@", self.area.name]];
+        } else {
+            str = [str stringByAppendingString:self.area.name];
+        }
+    }
+    
+    return str;
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

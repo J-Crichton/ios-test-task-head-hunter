@@ -7,7 +7,6 @@
 //
 
 #import "AlertHelper.h"
-#import "Version.h"
 
 @implementation AlertHelper
 
@@ -29,23 +28,18 @@
         } else return;
     }
 
-    if([Version iOS8OrLater]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 
-        // Ok button.
-        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-            [alertController dismissViewControllerAnimated:YES completion:nil];
+    // Ok button.
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:ok];
+
+    if(controller) {
+        [controller presentViewController:alertController animated:YES completion:^{
+
         }];
-        [alertController addAction:ok];
-
-        if(controller) {
-            [controller presentViewController:alertController animated:YES completion:^{
-
-            }];
-        }
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
     }
 }
 

@@ -35,7 +35,7 @@
 }
 
 -(BOOL)boolValueForKey:(NSString *)key {
-    return [objectData[key] boolValue];
+    return [self boolValueFrom:objectData forKey:key];
 }
 
 -(NSArray *)arrayValueForKey:(NSString *)key {

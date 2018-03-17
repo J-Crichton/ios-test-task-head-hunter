@@ -2,17 +2,15 @@
 //  ToastManager.m
 //  BaiBazar
 //
-//  Created by Narikbi on 25.10.16.
-//  Copyright © 2016 app.baibazar.kz. All rights reserved.
-//
 
 #import "ToastManager.h"
-#import "UIColor+App.h"
+#import "Chameleon.h"
+
 
 @implementation ToastManager
 
 + (void)showPlainMessage:(NSString *)message tap:(tapBlock)tap {
-    [self showMessage:message color:[UIColor appPurpleColor] tap:tap];
+    [self showMessage:message color:[UIColor flatPurpleColor] tap:tap];
 }
 
 + (void)showError:(NSString *)message {

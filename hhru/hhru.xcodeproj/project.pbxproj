@@ -32,6 +32,11 @@
 		EDDBD6C9205CFD860042397D /* PaginatorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6C7205CFD860042397D /* PaginatorResponse.m */; };
 		EDDBD6D2205D016D0042397D /* VacancyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6D0205D016D0042397D /* VacancyTableCell.m */; };
 		EDDBD6D3205D016D0042397D /* VacancyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDBD6D1205D016D0042397D /* VacancyTableCell.xib */; };
+		EDDBD6D6205D33E70042397D /* NSDateFormatter+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6D5205D33E60042397D /* NSDateFormatter+Ext.m */; };
+		EDDBD6D9205D34220042397D /* NSNumberFormatter+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6D8205D34210042397D /* NSNumberFormatter+Ext.m */; };
+		EDDBD6DD205D36670042397D /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDBD6DA205D36670042397D /* LoadingFooterView.xib */; };
+		EDDBD6DE205D36670042397D /* LoadingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6DB205D36670042397D /* LoadingFooterView.m */; };
+		EDDBD6E1205D38010042397D /* ASize.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6DF205D38010042397D /* ASize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +101,15 @@
 		EDDBD6CF205D016D0042397D /* VacancyTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VacancyTableCell.h; sourceTree = "<group>"; };
 		EDDBD6D0205D016D0042397D /* VacancyTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VacancyTableCell.m; sourceTree = "<group>"; };
 		EDDBD6D1205D016D0042397D /* VacancyTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VacancyTableCell.xib; sourceTree = "<group>"; };
+		EDDBD6D4205D33E60042397D /* NSDateFormatter+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Ext.h"; sourceTree = "<group>"; };
+		EDDBD6D5205D33E60042397D /* NSDateFormatter+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Ext.m"; sourceTree = "<group>"; };
+		EDDBD6D7205D34210042397D /* NSNumberFormatter+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+Ext.h"; sourceTree = "<group>"; };
+		EDDBD6D8205D34210042397D /* NSNumberFormatter+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+Ext.m"; sourceTree = "<group>"; };
+		EDDBD6DA205D36670042397D /* LoadingFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingFooterView.xib; sourceTree = "<group>"; };
+		EDDBD6DB205D36670042397D /* LoadingFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingFooterView.m; sourceTree = "<group>"; };
+		EDDBD6DC205D36670042397D /* LoadingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingFooterView.h; sourceTree = "<group>"; };
+		EDDBD6DF205D38010042397D /* ASize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASize.m; sourceTree = "<group>"; };
+		EDDBD6E0205D38010042397D /* ASize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASize.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +250,10 @@
 				EDDBD6A5205CEC240042397D /* NSObject+PWObject.m */,
 				EDDBD6AA205CEC520042397D /* NSString+Ext.h */,
 				EDDBD6A9205CEC520042397D /* NSString+Ext.m */,
+				EDDBD6D4205D33E60042397D /* NSDateFormatter+Ext.h */,
+				EDDBD6D5205D33E60042397D /* NSDateFormatter+Ext.m */,
+				EDDBD6D7205D34210042397D /* NSNumberFormatter+Ext.h */,
+				EDDBD6D8205D34210042397D /* NSNumberFormatter+Ext.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -265,6 +283,9 @@
 				EDDBD6CF205D016D0042397D /* VacancyTableCell.h */,
 				EDDBD6D0205D016D0042397D /* VacancyTableCell.m */,
 				EDDBD6D1205D016D0042397D /* VacancyTableCell.xib */,
+				EDDBD6DC205D36670042397D /* LoadingFooterView.h */,
+				EDDBD6DB205D36670042397D /* LoadingFooterView.m */,
+				EDDBD6DA205D36670042397D /* LoadingFooterView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +298,8 @@
 				EDDBD6A0205CEC030042397D /* ToastManager.h */,
 				EDDBD69F205CEC030042397D /* ToastManager.m */,
 				EDDBD69C205CEB3A0042397D /* Constants.h */,
+				EDDBD6E0205D38010042397D /* ASize.h */,
+				EDDBD6DF205D38010042397D /* ASize.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -370,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED5D1E0C205CE70C0027FED9 /* LaunchScreen.storyboard in Resources */,
+				EDDBD6DD205D36670042397D /* LoadingFooterView.xib in Resources */,
 				ED5D1E09205CE70C0027FED9 /* Assets.xcassets in Resources */,
 				EDDBD6D3205D016D0042397D /* VacancyTableCell.xib in Resources */,
 				ED5D1E07205CE70C0027FED9 /* Main.storyboard in Resources */,
@@ -501,14 +525,18 @@
 				EDDBD6A7205CEC240042397D /* NSObject+Json.m in Sources */,
 				EDDBD6C6205CFD220042397D /* VacancyApi.m in Sources */,
 				ED5D1E0F205CE70C0027FED9 /* main.m in Sources */,
+				EDDBD6D9205D34220042397D /* NSNumberFormatter+Ext.m in Sources */,
 				EDDBD6D2205D016D0042397D /* VacancyTableCell.m in Sources */,
 				EDDBD6AE205CECE30042397D /* ModelObject.m in Sources */,
 				EDDBD6C9205CFD860042397D /* PaginatorResponse.m in Sources */,
 				EDDBD6A8205CEC240042397D /* NSObject+PWObject.m in Sources */,
 				EDDBD6B7205CF14E0042397D /* Salary.m in Sources */,
+				EDDBD6D6205D33E70042397D /* NSDateFormatter+Ext.m in Sources */,
 				EDDBD69B205CEB070042397D /* APIClient.m in Sources */,
 				EDDBD6C0205CF2780042397D /* Vacancy.m in Sources */,
 				EDDBD6AB205CEC520042397D /* NSString+Ext.m in Sources */,
+				EDDBD6E1205D38010042397D /* ASize.m in Sources */,
+				EDDBD6DE205D36670042397D /* LoadingFooterView.m in Sources */,
 				ED5D1E01205CE70C0027FED9 /* AppDelegate.m in Sources */,
 				EDDBD6A1205CEC030042397D /* Connection.m in Sources */,
 			);

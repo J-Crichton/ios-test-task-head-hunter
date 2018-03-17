@@ -39,19 +39,6 @@ static NSMutableDictionary *_activeTasks = nil;
         _manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:API_BASE_URL] sessionConfiguration:sessionConfiguration];
         [_manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
         [_manager setResponseSerializer:[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments]];
-        NSMutableSet *contentTypes = [[_manager.responseSerializer acceptableContentTypes] mutableCopy];
-        [contentTypes addObject:@"text/plain"];
-        [contentTypes addObject:@"text/html"];
-        [_manager.responseSerializer setAcceptableContentTypes:contentTypes];
-        
-        //off SSL
-        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-        securityPolicy.allowInvalidCertificates = YES;
-        [securityPolicy setValidatesDomainName:NO];
-        
-        [_manager setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition (NSURLSession *session, NSURLAuthenticationChallenge *challenge, NSURLCredential * __autoreleasing *credential) {
-            return NSURLSessionAuthChallengePerformDefaultHandling;
-        }];
     });
 
     return _manager;
@@ -311,17 +298,6 @@ static NSMutableDictionary *_activeTasks = nil;
         }
     }
     
-//    switch (error.code)
-//    {
-//        case 0:
-//            // Could not connect to the server.
-//            if (showMessage) [self showNotification:localizedDescription];
-//            break;
-//        case 200:
-//            if (showMessage) [self showNotification:localizedDescription];
-//            break;
-//        default:break;
-//    }
     if(failure) failure(errorCode, error.localizedDescription);
 
 }
@@ -353,7 +329,6 @@ static NSMutableDictionary *_activeTasks = nil;
 {
     // If internet connection fine.
     if([Connection isReachable] && ![[self sharedClient] isDisabledNotificationToasts]) {
-//        [StatusToastHelper showError:message];
         [ToastManager showError:message];
     } else {
         [ToastManager showError:@"Интернет соединение отсутствует"];
@@ -362,15 +337,10 @@ static NSMutableDictionary *_activeTasks = nil;
 
 + (void)showAlertWithErrorCode:(NSInteger)code title:(NSString *)title message:(NSString *)message
 {
-//    if(code != kCodeDontShowAlert && ![APIClient sharedClient].isDisabledAlerts && ((title && ![title isEqual:@""]) || (message && ![message isEqual:@""]))) {
     if((title && ![title isEqual:@""]) || (message && ![message isEqual:@""])) {
-        
         [AlertHelper showInController:nil title:title message:message];
     }
 }
-
-#pragma mark -
-#pragma mark Helper
 
 #pragma mark -
 #pragma mark NSURLSessionDataTask

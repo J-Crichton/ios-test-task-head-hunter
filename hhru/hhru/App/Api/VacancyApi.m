@@ -11,9 +11,10 @@
 
 @implementation VacancyApi
 
-+ (void)vacanciesAtPage:(NSInteger)page perPage:(NSInteger)perPage success:(Success)success failure:(Failure)failure {
++ (void)vacanciesAtPage:(NSNumber *)page perPage:(NSNumber *)perPage success:(Success)success failure:(Failure)failure {
     
-    NSDictionary *params = @{@"page" : @(page), @"per_page": @(perPage)};
+    NSDictionary *params = @{@"page" : page, @"per_page": perPage};
+    
     [self GET:@"vacancies" parameters:params success:^(id response) {
         
         PaginatorResponse *paginator = [[PaginatorResponse alloc] initWithVacancyData:response];

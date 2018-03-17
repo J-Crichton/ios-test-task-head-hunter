@@ -18,4 +18,6 @@
 + (Salary *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
+- (NSString *)formattedRange;
+
 @end

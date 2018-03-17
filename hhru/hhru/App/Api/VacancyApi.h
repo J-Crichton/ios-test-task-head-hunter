@@ -10,4 +10,7 @@
 
 @interface VacancyApi : APIClient
 
++ (void)vacanciesAtPage:(NSNumber *)page perPage:(NSNumber *)perPage success:(Success)success failure:(Failure)failure;
+
+
 @end

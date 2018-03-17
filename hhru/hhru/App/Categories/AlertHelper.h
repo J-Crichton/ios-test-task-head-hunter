@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Zenge. All rights reserved.
 //
 
-
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @interface AlertHelper : NSObject
 

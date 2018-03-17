@@ -2,9 +2,6 @@
 //  ToastManager.h
 //  BaiBazar
 //
-//  Created by Narikbi on 25.10.16.
-//  Copyright © 2016 app.baibazar.kz. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 #import "CRToast.h"

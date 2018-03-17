@@ -25,15 +25,17 @@
 }
 
 - (void)initVars:(id)datas {
-    self.totalPage  = [self numberValueFrom:datas forKey:@"pages"];
+    self.totalPage   = [self numberValueFrom:datas forKey:@"pages"];
     self.totalItem   = [self numberValueFrom:datas forKey:@"found"];
+    self.currentPage = [self numberValueFrom:datas forKey:@"page"];
+    self.perPage     = [self numberValueFrom:datas forKey:@"per_page"];
 
     self.items = [NSArray new];
 }
 
 - (BOOL)hasNextPage {
-    NSLog(@"currentPage: %ld, totalPage: %@", self.currentPage, self.totalPage);
-    return self.totalPage.integerValue > 0 && self.currentPage < self.totalPage.integerValue;
+    NSLog(@"currentPage: %@, totalPage: %@", self.currentPage, self.totalPage);
+    return self.totalPage.integerValue > 0 && self.currentPage.integerValue < self.totalPage.integerValue;
 }
 
 

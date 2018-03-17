@@ -10,6 +10,6 @@
 
 #define kDEBUG_LOGS YES
 
-#define API_BASE_URL @"https://api.hh.ru"
+#define API_BASE_URL @"https://api.hh.ru/"
 
 
