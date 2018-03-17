@@ -1,0 +1,27 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'hhru' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for hhru
+
+  pod 'Reachability', '3.2'
+  pod 'FrameAccessor', '2.0'
+  pod 'AFNetworking', '3.1.0'
+  pod 'SVProgressHUD', '1.1.3'
+  pod 'UIAlertView+Blocks', '0.9'
+  pod 'ConcisePureLayout', '0.3.2'
+  pod 'UIAlertController+Blocks'
+  pod 'CRToast'
+  pod 'DateTools'
+  pod 'AFNetworkActivityLogger', :git => 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', :branch => '3_0_0'
+  pod 'ObjectiveSugar'
+
+  target 'hhruTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
