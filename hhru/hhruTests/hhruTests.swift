@@ -17,8 +17,9 @@ class hhruTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        vc = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        //let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        //vc = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        vc = ViewController()
     }
     
     override func tearDown() {
@@ -67,6 +68,19 @@ class hhruTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
     
+    func testGetVacanciesPerformance() {
+        // This is an example of a performance test case.
+        self.measure {
+            let e = expectation(description: "getVacancyPerformance")
+            RequestManager.sharedInstance.getVacancies(page: 0, success: { _ in
+                e.fulfill()
+            }, failure: { error in
+                e.fulfill()
+            })
+            waitForExpectations(timeout: 10.0, handler: nil)
+        }
+    }
+    
     // MARK: - Salary
     
     func testSalaryWithoutToValue() {
@@ -85,19 +99,6 @@ class hhruTests: XCTestCase {
         let salary = Salary.init(from: 3000, to: 6000, currency: "USD")
         let salaryString = salary.getSalaryString()
         XCTAssert(salaryString == "3000-6000 USD", "getSalaryString doesn't work properly")
-    }
-    
-    func testGetVacanciesPerformance() {
-        // This is an example of a performance test case.
-        self.measure {
-            let e = expectation(description: "getVacancyPerformance")
-            RequestManager.sharedInstance.getVacancies(page: 0, success: { _ in
-                e.fulfill()
-            }, failure: { error in
-                e.fulfill()
-            })
-            waitForExpectations(timeout: 10.0, handler: nil)
-        }
     }
     
 }

@@ -10,8 +10,8 @@ import UIKit
 import PKHUD
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+    
+    var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     
     var vacancies = [Vacancy]()
@@ -20,14 +20,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        title = "hh.ru"
+        
+        configureTableView()
         
         getVacancies(page: page, fromRefresh: false)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func configureTableView() {
+        tableView = UITableView(frame: self.view.frame, style: .plain)
+        view.addSubview(tableView)
+        tableView.contentInsetAdjustmentBehavior = .automatic
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = UIColor.white
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(VacancyViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -44,13 +56,10 @@ class ViewController: UIViewController {
                 if fromRefresh == true {
                     self.vacancies = []
                     self.refreshControl.endRefreshing()
+                } else {
+                    self.tableView.setContentOffset(self.tableView.contentOffset, animated: false)
                 }
                 self.vacancies = self.vacancies + vacancies
-                if vacancies.count > 20 {
-                    self.tableView.estimatedRowHeight = 0
-                    self.tableView.estimatedSectionHeaderHeight = 0
-                    self.tableView.estimatedSectionFooterHeight = 0
-                }
                 self.tableView.reloadData()
             });
         }, failure: { _ in
@@ -78,6 +87,8 @@ extension ViewController: UITableViewDataSource {
         cell.companyNameLabel.text = vacancy.companyName
         if let salary = vacancy.salary {
             cell.salaryLabel.text = salary
+        } else {
+            cell.salaryLabel.text = "не указано"
         }
         cell.tag = indexPath.row
         if vacancy.image == nil {
@@ -116,35 +127,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-}
-
-class VacancyViewCell: UITableViewCell {
-    
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var companyNameLabel: UILabel!
-    @IBOutlet weak var salaryLabel: UILabel!
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        logoImageView.image = nil
-    }
-    
 }
