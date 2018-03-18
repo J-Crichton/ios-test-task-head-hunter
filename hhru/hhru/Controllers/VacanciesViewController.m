@@ -12,6 +12,7 @@
 #import "PaginatorResponse.h"
 #import "SVProgressHUD.h"
 #import "LoadingFooterView.h"
+#import "UIViewController+NoContent.h"
 
 @interface VacanciesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -73,7 +74,7 @@
     [VacancyApi vacanciesAtPage:@(currentPage) perPage:@(30) success:^(PaginatorResponse* response) {
         [SVProgressHUD dismiss];
         [refreshControl endRefreshing];
-        self.tableView.tableFooterView = nil;
+        wself.tableView.tableFooterView = [UIView new];
 
         paginator = response;
         paginator.loaded = YES;
@@ -84,10 +85,13 @@
         [vacancies addObjectsFromArray:response.items];
         [wself.tableView reloadData];
         
+        [wself checkNoContent];
+        
     } failure:^(NSInteger code, NSString *message) {
         [SVProgressHUD dismiss];
         [refreshControl endRefreshing];
-        self.tableView.tableFooterView = nil;
+        wself.tableView.tableFooterView = [UIView new];
+        [wself checkNoContent];
     }];
     
 }
@@ -102,7 +106,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VacancyTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VacancyTableCell"];
     [cell setVacancy:vacancies[indexPath.row]];
-    
     return cell;
 }
 
@@ -122,7 +125,6 @@
     NSInteger items = [tableView numberOfRowsInSection:indexPath.section];
     
     if ([indexPath section] == sections - 1 && indexPath.item == items - 1) {
-        NSLog(@"Last Row");
         if (paginator.loaded && paginator.hasNextPage) {
             currentPage++;
             [self loadData];
@@ -133,6 +135,14 @@
 
 #pragma mark -
 #pragma mark - ConfigUI
+
+- (void)checkNoContent {
+    if (!vacancies.count) {
+        [self showNoContentMessage:@"К сожалению, в данный момент нет подходящих вакансий\nПопробуйте обновить страницу" withButton:@"Обновить" selector:@selector(loadFirstPage)];
+    } else {
+        [self removeNoContentMessageIfExists];
+    }
+}
 
 - (void)configUI {
     
@@ -147,8 +157,10 @@
     [refreshControl addTarget:self action:@selector(loadFirstPage) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     
-//    UIImage *image = [UIImage imageNamed:@"logo"];
-//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
+    self.tableView.tableFooterView = [UIView new];
+    
+    UIImage *image = [UIImage imageNamed:@"logo-mini"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
 
 }
 

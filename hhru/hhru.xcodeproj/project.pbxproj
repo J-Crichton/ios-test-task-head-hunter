@@ -37,6 +37,7 @@
 		EDDBD6DD205D36670042397D /* LoadingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDBD6DA205D36670042397D /* LoadingFooterView.xib */; };
 		EDDBD6DE205D36670042397D /* LoadingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6DB205D36670042397D /* LoadingFooterView.m */; };
 		EDDBD6E1205D38010042397D /* ASize.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6DF205D38010042397D /* ASize.m */; };
+		EDDBD6E4205E56660042397D /* UIViewController+NoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDBD6E3205E56660042397D /* UIViewController+NoContent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,8 @@
 		EDDBD6DC205D36670042397D /* LoadingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingFooterView.h; sourceTree = "<group>"; };
 		EDDBD6DF205D38010042397D /* ASize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASize.m; sourceTree = "<group>"; };
 		EDDBD6E0205D38010042397D /* ASize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASize.h; sourceTree = "<group>"; };
+		EDDBD6E2205E56660042397D /* UIViewController+NoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NoContent.h"; sourceTree = "<group>"; };
+		EDDBD6E3205E56660042397D /* UIViewController+NoContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NoContent.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,8 @@
 				EDDBD6D5205D33E60042397D /* NSDateFormatter+Ext.m */,
 				EDDBD6D7205D34210042397D /* NSNumberFormatter+Ext.h */,
 				EDDBD6D8205D34210042397D /* NSNumberFormatter+Ext.m */,
+				EDDBD6E2205E56660042397D /* UIViewController+NoContent.h */,
+				EDDBD6E3205E56660042397D /* UIViewController+NoContent.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				EDDBD6E1205D38010042397D /* ASize.m in Sources */,
 				EDDBD6DE205D36670042397D /* LoadingFooterView.m in Sources */,
 				ED5D1E01205CE70C0027FED9 /* AppDelegate.m in Sources */,
+				EDDBD6E4205E56660042397D /* UIViewController+NoContent.m in Sources */,
 				EDDBD6A1205CEC030042397D /* Connection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
