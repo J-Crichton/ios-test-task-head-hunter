@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         tableView.register(VacancyViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        tableView.tableFooterView = UIView()
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -64,10 +65,11 @@ class ViewController: UIViewController {
             });
         }, failure: { _ in
             let alert = UIAlertController(title: "Ошибка", message: "У Вас проблемы с сетью!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "ОК", style: UIAlertActionStyle.default, handler: { _ in
+            alert.addAction(UIAlertAction(title: "Обновить", style: UIAlertActionStyle.default, handler: { _ in
                 if fromRefresh == true {
                     self.refreshControl.endRefreshing()
                 }
+                self.getVacancies(page: 0, fromRefresh: false)
             }))
             self.present(alert, animated: true, completion: nil)
         })
