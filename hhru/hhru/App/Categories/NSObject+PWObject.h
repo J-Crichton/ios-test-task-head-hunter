@@ -1,10 +1,3 @@
-//
-//  NSObject+PWObject.h
-//  Myth
-//
-//  Created by Narikbi on 1/29/13.
-//
-//
 
 #import <Foundation/Foundation.h>
 

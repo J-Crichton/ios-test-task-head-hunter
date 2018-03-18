@@ -1,10 +1,4 @@
-//
-//  NSString+Ext.m
-//  Zenge
-//
-//  Created by Narikbi on 9/23/15.
-//  Copyright © 2015 Zenge. All rights reserved.
-//
+
 
 #import "NSString+Ext.h"
 #import "NSDateFormatter+Ext.h"

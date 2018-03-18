@@ -1,9 +1,5 @@
 //
 //  AlertHelper.h
-//  Zenge
-//
-//  Created by Narikbi on 10/27/15.
-//  Copyright (c) 2015 Zenge. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

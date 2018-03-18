@@ -34,7 +34,7 @@
 }
 
 - (BOOL)hasNextPage {
-    NSLog(@"currentPage: %@, totalPage: %@", self.currentPage, self.totalPage);
+//    NSLog(@"currentPage: %@, totalPage: %@", self.currentPage, self.totalPage);
     return self.totalPage.integerValue > 0 && self.currentPage.integerValue < self.totalPage.integerValue;
 }
 

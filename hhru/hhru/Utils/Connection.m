@@ -1,9 +1,5 @@
 //
 //  Connection.m
-//  AstanaKzPublicControl
-//
-//  Created by Narikbi on 6/4/13.
-//  Copyright (c) 2013 Astana.kz. All rights reserved.
 //
 
 #import "UIView+ConcisePureLayout.h"
@@ -31,7 +27,6 @@ static BOOL _isReachable;
 
 +(BOOL)isReachableM {
     BOOL b = [self isReachable];
-//    if(!b) [UIHelper showMessage:NSLocalizedString(@"Нет соединения с интернетом", nil)];
     if(!b) [SVProgressHUD showImage:[UIImage imageNamed:@"no_connection.png"] status:NSLocalizedString(@"No Internet connection", nil)];
     return b;
 }

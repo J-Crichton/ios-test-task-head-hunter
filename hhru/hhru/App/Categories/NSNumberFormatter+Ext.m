@@ -1,7 +1,4 @@
-//
-//  NSNumberFormatter+Ext.m
-//  BAF
-//
+
 
 #import "NSNumberFormatter+Ext.h"
 

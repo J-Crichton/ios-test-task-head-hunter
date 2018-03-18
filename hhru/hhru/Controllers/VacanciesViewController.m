@@ -29,13 +29,6 @@
 #pragma mark -
 #pragma mark - Init
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
-
 - (void)initVars {
     vacancies = [NSMutableArray new];
     currentPage = 0;

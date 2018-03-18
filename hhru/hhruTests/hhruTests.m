@@ -100,7 +100,7 @@
         XCTFail(@"Failed to get vacancies");
     }];
     
-    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+    [self waitForExpectationsWithTimeout:20 handler:^(NSError *error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
             XCTFail(@"Failed to get vacancies");
@@ -118,7 +118,6 @@
     Vacancy *vacancy1 = [[Vacancy alloc] initWithName:@"PHP программист" publishedAt:[NSDate date] salary:salary1 area:area1 employer:employer1];
  
     NSString *expectedStr = @"500 - 1000 $・Москва";
-    NSLog(@"%@", vacancy1.formattedSalaryArea);
     XCTAssertTrue([expectedStr isEqualToString: vacancy1.formattedSalaryArea]);
 
     // from
@@ -128,7 +127,6 @@
     
     expectedStr = @"от 100000 ₸・Алматы";
     Vacancy *vacancy2 = [[Vacancy alloc] initWithName:@"Водитель" publishedAt:[NSDate date] salary:salary2 area:area2 employer:employer2];
-    NSLog(@"%@", vacancy2.formattedSalaryArea);
     XCTAssertTrue([expectedStr isEqualToString: vacancy2.formattedSalaryArea]);
 
     // until
@@ -138,13 +136,11 @@
     
     expectedStr = @"до 1000 €・Amsterdam";
     Vacancy *vacancy3 = [[Vacancy alloc] initWithName:@"Driver" publishedAt:[NSDate date] salary:salary3 area:area3 employer:employer3];
-    NSLog(@"%@", vacancy3.formattedSalaryArea);
     XCTAssertTrue([expectedStr isEqualToString: vacancy3.formattedSalaryArea]);
 
     // empty
     expectedStr = @"Amsterdam";
     Vacancy *vacancy4 = [[Vacancy alloc] initWithName:@"ML engineer" publishedAt:[NSDate date] salary:nil area:area3 employer:employer3];
-    NSLog(@"%@", vacancy4.formattedSalaryArea);
     XCTAssertTrue([expectedStr isEqualToString: vacancy4.formattedSalaryArea]);
     
 }

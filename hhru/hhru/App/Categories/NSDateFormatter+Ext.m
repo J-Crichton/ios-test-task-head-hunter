@@ -1,7 +1,4 @@
-//
-//  NSDateFormatter+Ext.m
-//  BAF
-//
+
 
 #import "NSDateFormatter+Ext.h"
 

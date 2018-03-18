@@ -1,10 +1,4 @@
-//
-//  NSString+Ext.h
-//  Zenge
-//
-//  Created by Narikbi on 9/23/15.
-//  Copyright © 2015 Zenge. All rights reserved.
-//
+
 
 #import <Foundation/Foundation.h>
 

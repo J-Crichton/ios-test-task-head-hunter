@@ -1,7 +1,3 @@
-//
-// Created by Narikbi on 4/9/14.
-// Copyright (c) 2014 Crystal Spring LLC. All rights reserved.
-//
 
 #import "NSObject+Json.h"
 
