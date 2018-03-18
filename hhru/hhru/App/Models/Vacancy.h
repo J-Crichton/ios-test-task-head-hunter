@@ -20,6 +20,12 @@
 @property (nonatomic, strong) Salary *salary;
 @property (nonatomic, strong) Employer *employer;
 
+- (instancetype)initWithName:(NSString *)name
+                 publishedAt:(NSDate *)publishedAt
+                      salary:(Salary *)salary
+                        area:(Area *)area
+                    employer:(Employer *)employer;
+
 + (Vacancy *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 

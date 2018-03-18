@@ -10,6 +10,18 @@
 
 @implementation Salary
 
+- (instancetype)initWithFrom:(NSNumber *)from to:(NSNumber *)to gross:(BOOL)gross currency:(NSString *)currency {
+    self = [super init];
+    if (self) {
+        _from = from;
+        _to = to;
+        _gross = gross;
+        _currency = currency;
+    }
+    return self;
+}
+
+
 + (Salary *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Salary *instance = [[Salary alloc] init];
@@ -39,7 +51,7 @@
     NSString *str = @"";
     if (self.from.integerValue > 0) {
         if (self.to.integerValue == 0) {
-            str = [str stringByAppendingString:@"до "];
+            str = [str stringByAppendingString:@"от "];
         }
         str = [str stringByAppendingString:self.from.stringValue];
     }

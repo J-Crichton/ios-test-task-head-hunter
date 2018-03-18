@@ -19,16 +19,13 @@ typedef void (^Failure)(NSInteger code, NSString *message);
 
 + (void)POST:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;
 + (void)POST:(NSString *)path success:(Success)success failure:(Failure)failure;
-+ (void)POST:(NSString *)path parameters:(NSDictionary *)parameters showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure;
 + (void)POST:(NSString *)path uploadImage:(NSData *)imageData dataName:(NSString *)dataName parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;
 
 + (void)PUT:(NSString *)path success:(Success)success failure:(Failure)failure;
 + (void)PUT:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;
-+(void)PUT:(NSString *)path parameters:(NSDictionary *)parameters showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure;
 
 + (void)GET:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;
 + (void)GET:(NSString *)path success:(Success)success failure:(Failure)failure;
-+ (void)GET:(NSString *)path parameters:(NSDictionary *)parameters showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure;
 
 + (void)DELETE:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;
 

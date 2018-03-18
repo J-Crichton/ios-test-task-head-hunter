@@ -17,5 +17,7 @@
 + (Employer *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
+- (instancetype)initWithEmpoyerId:(NSNumber *)empoyerId logo:(NSString *)logo name:(NSString *)name;
+
 
 @end

@@ -18,6 +18,7 @@
 + (Salary *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
+- (instancetype)initWithFrom:(NSNumber *)from to:(NSNumber *)to gross:(BOOL)gross currency:(NSString *)currency;
 - (NSString *)formattedRange;
 
 @end

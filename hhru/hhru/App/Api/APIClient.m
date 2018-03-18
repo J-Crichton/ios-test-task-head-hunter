@@ -61,11 +61,7 @@ static NSMutableDictionary *_activeTasks = nil;
 }
 
 + (void)POST:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure {
-    [self METHOD:@"POST" path:path parameters:parameters body:nil showMessage:YES success:success failure:failure];
-}
-
-+ (void)POST:(NSString *)path parameters:(NSDictionary *)parameters showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure {
-    [self METHOD:@"POST" path:path parameters:parameters body:nil showMessage:showMessage success:success failure:failure];
+    [self METHOD:@"POST" path:path parameters:parameters body:nil success:success failure:failure];
 }
 
 + (void)POST:(NSString *)path uploadImage:(NSData *)imageData dataName:(NSString *)dataName parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
@@ -96,9 +92,9 @@ static NSMutableDictionary *_activeTasks = nil;
     [[self manager] POST:[self apiUrlWithPath:path] parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
         [formData appendPartWithFileData:uploadData name:formDataName fileName:fileName mimeType:mimeType];
     } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        [self handleSuccessResponse:responseObject pathID:pathID showMessage:YES success:success failure:failure];
+        [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self handleFailureWithError:error task:task pathID:pathID showMessage:YES failure:failure];
+        [self handleFailureWithError:error task:task pathID:pathID failure:failure];
     }];
 }
 
@@ -110,11 +106,7 @@ static NSMutableDictionary *_activeTasks = nil;
 }
 
 + (void)GET:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure {
-    [self METHOD:@"GET" path:path parameters:parameters body:nil showMessage:YES success:success failure:failure];
-}
-
-+ (void)GET:(NSString *)path parameters:(NSDictionary *)parameters showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure {
-    [self METHOD:@"GET" path:path parameters:parameters body:nil showMessage:showMessage success:success failure:failure];
+    [self METHOD:@"GET" path:path parameters:parameters body:nil success:success failure:failure];
 }
 
 
@@ -122,41 +114,37 @@ static NSMutableDictionary *_activeTasks = nil;
 #pragma mark PUT
 
 +(void)PUT:(NSString *)path success:(Success)success failure:(Failure)failure {
-    [self PUT:path parameters:nil body:nil showMessage:YES success:success failure:failure contentType:nil];
+    [self PUT:path parameters:nil body:nil success:success failure:failure contentType:nil];
 }
 
 +(void)PUT:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure {
-    [self PUT:path parameters:parameters body:nil showMessage:YES success:success failure:failure contentType:nil];
+    [self PUT:path parameters:parameters body:nil success:success failure:failure contentType:nil];
 }
 
-+(void)PUT:(NSString *)path parameters:(NSDictionary *)parameters showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure {
-    [self PUT:path parameters:parameters body:nil showMessage:showMessage success:success failure:failure contentType:nil];
++(void)PUT:(NSString *)path body:(NSString *)body success:(Success)success failure:(Failure)failure {
+    [self PUT:path parameters:nil body:body success:success failure:failure contentType:nil];
 }
 
-
-+(void)PUT:(NSString *)path body:(NSString *)body showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure {
-    [self PUT:path parameters:nil body:body showMessage:YES success:success failure:failure contentType:nil];
++(void)PUT:(NSString *)path body:(NSString *)body success:(Success)success failure:(Failure)failure contentType:(NSString *)contentType {
+    [self PUT:path parameters:nil body:body success:success failure:failure contentType:contentType];
 }
 
-+(void)PUT:(NSString *)path body:(NSString *)body showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure contentType:(NSString *)contentType {
-    [self PUT:path parameters:nil body:body showMessage:YES success:success failure:failure contentType:contentType];
++ (void)PUT:(NSString *)path parameters:(NSDictionary *)parameters body:(NSString *)body success:(Success)success failure:(Failure)failure contentType:(NSString *)contentType {
+    [self METHOD:@"PUT" path:path parameters:parameters body:body success:success failure:failure];
 }
 
-+ (void)PUT:(NSString *)path parameters:(NSDictionary *)parameters body:(NSString *)body showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure contentType:(NSString *)contentType {
-    [self METHOD:@"PUT" path:path parameters:parameters body:body showMessage:YES success:success failure:failure];
-}
+#pragma mark -
+#pragma mark - DELETE
 
 + (void)DELETE:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure {
-    [self METHOD:@"DELETE" path:path parameters:parameters body:nil showMessage:YES success:success failure:failure];
+    [self METHOD:@"DELETE" path:path parameters:parameters body:nil success:success failure:failure];
 }
-
-
 
 
 #pragma mark -
 #pragma mark Mix methods
 
-+ (void)METHOD:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters body:(NSString *)body showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure
++ (void)METHOD:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters body:(NSString *)body success:(Success)success failure:(Failure)failure
 {
     if ([Connection isReachableM]) {
         
@@ -177,9 +165,9 @@ static NSMutableDictionary *_activeTasks = nil;
 
             requestTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
                 if(!error) {
-                    [self handleSuccessResponse:responseObject pathID:pathID showMessage:showMessage success:success failure:failure];
+                    [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
                 } else {
-                    [self handleFailureWithError:error task:nil pathID:pathID showMessage:showMessage failure:failure];
+                    [self handleFailureWithError:error task:nil pathID:pathID failure:failure];
                 }
             }];
             [requestTask resume];
@@ -189,42 +177,42 @@ static NSMutableDictionary *_activeTasks = nil;
             if([method isEqual:@"POST"])
             {
                 requestTask = [manager POST:[self apiUrlWithPath:path] parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                    [self handleSuccessResponse:responseObject pathID:pathID showMessage:showMessage success:success failure:failure];
+                    [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    [self handleFailureWithError:error task:task pathID:pathID showMessage:showMessage failure:failure];
+                    [self handleFailureWithError:error task:task pathID:pathID failure:failure];
                 }];
             }
             else if([method isEqual:@"PATCH"])
             {
                 requestTask = [manager PATCH:[self apiUrlWithPath:path] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-                    [self handleSuccessResponse:responseObject pathID:pathID showMessage:showMessage success:success failure:failure];
+                    [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    [self handleFailureWithError:error task:task pathID:pathID showMessage:showMessage failure:failure];
+                    [self handleFailureWithError:error task:task pathID:pathID failure:failure];
                 }];
             }
             else if([method isEqual:@"PUT"])
             {
                 requestTask = [manager PUT:[self apiUrlWithPath:path] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-                    [self handleSuccessResponse:responseObject pathID:pathID showMessage:showMessage success:success failure:failure];
+                    [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    [self handleFailureWithError:error task:task pathID:pathID showMessage:showMessage failure:failure];
+                    [self handleFailureWithError:error task:task pathID:pathID failure:failure];
                 }];
             }
             else if([method isEqual:@"GET"])
             {
                 
                 requestTask = [manager GET:[self apiUrlWithPath:path] parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                    [self handleSuccessResponse:responseObject pathID:pathID showMessage:showMessage success:success failure:failure];
+                    [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    [self handleFailureWithError:error task:task pathID:pathID showMessage:showMessage failure:failure];
+                    [self handleFailureWithError:error task:task pathID:pathID failure:failure];
                 }];
             }
             else if([method isEqual:@"DELETE"])
             {
                 requestTask = [manager DELETE:path parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    [self handleSuccessResponse:responseObject pathID:pathID showMessage:showMessage success:success failure:failure];
+                    [self handleSuccessResponse:responseObject pathID:pathID success:success failure:failure];
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    [self handleFailureWithError:error task:task pathID:pathID showMessage:showMessage failure:failure];
+                    [self handleFailureWithError:error task:task pathID:pathID failure:failure];
                 }];
             }
 
@@ -245,7 +233,7 @@ static NSMutableDictionary *_activeTasks = nil;
 #pragma mark -
 #pragma mark Handle Success / Failure
 
-+ (void)handleSuccessResponse:(id)response pathID:(NSString *)pathID showMessage:(BOOL)showMessage success:(Success)success failure:(Failure)failure {
++ (void)handleSuccessResponse:(id)response pathID:(NSString *)pathID success:(Success)success failure:(Failure)failure {
     
     if (kDEBUG_LOGS) NSLog(@"RESPONSE_OBJECT (%@): %@", pathID, [response JSONRepresentation]);
 
@@ -262,10 +250,8 @@ static NSMutableDictionary *_activeTasks = nil;
 + (void)handleFailureWithError:(NSError *)error
                           task:(NSURLSessionDataTask*)task
                         pathID:(NSString *)pathID
-                   showMessage:(BOOL)showMessage
                        failure:(Failure)failure
 {
-    NSLog(@"ERROR: %@", error.userInfo);
     
     NSInteger errorCode = error.code;
     if (task) {
@@ -283,18 +269,16 @@ static NSMutableDictionary *_activeTasks = nil;
     NSString *localizedDescription = error.localizedDescription;
 
     if(kDEBUG_LOGS) NSLog(@"2) %li, %@", (long)error.code, localizedDescription);
-
-    if (showMessage) {
+    
+    NSData *data= error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+    if (data != nil) {
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        NSData *data= error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-        
-        if (data != nil) {
-            id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
-            if ([json objectForKey:@"error"]) {
-                NSString *str = [json objectForKey:@"error"];
-                if (showMessage) [self showNotification:str];
-            }
+        if ([json objectForKey:@"description"]) {
+            NSString *str = [json objectForKey:@"description"];
+            [self showNotification:str];
+        } else {
+            [self showNotification:localizedDescription];
         }
     }
     
@@ -380,9 +364,6 @@ static NSMutableDictionary *_activeTasks = nil;
     NSURLSessionDataTask *task = [self taskWithPathID:pathID];
     if(task && task.state == NSURLSessionTaskStateRunning) {
         [task cancel];
-//        if(DEBUG) {
-//            NSLog(@"Cancelled task: %@", pathID);
-//        }
         if(result) result(YES);
     }
     if(result) result(NO);

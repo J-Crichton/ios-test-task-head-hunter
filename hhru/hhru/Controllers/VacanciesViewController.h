@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface VacanciesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+@property (strong, nonatomic) UITableView *tableView;
 @end

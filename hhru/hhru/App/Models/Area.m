@@ -10,6 +10,16 @@
 
 @implementation Area
 
+- (instancetype)initWithAreaId:(NSNumber *)areaId name:(NSString *)name
+{
+    self = [super init];
+    if (self) {
+        _areaId = areaId;
+        _name = name;
+    }
+    return self;
+}
+
 + (Area *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Area *instance = [[Area alloc] init];

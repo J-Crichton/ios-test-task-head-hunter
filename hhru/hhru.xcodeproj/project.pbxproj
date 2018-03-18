@@ -10,7 +10,6 @@
 		34C4CCC6EE7F7BC48C1F9061 /* libPods-hhruTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63825F5438451887E8C09681 /* libPods-hhruTests.a */; };
 		B0D93F92F8A2DA2884972846 /* libPods-hhru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FDD8B77509444A5A12323C /* libPods-hhru.a */; };
 		ED5D1E01205CE70C0027FED9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5D1E00205CE70C0027FED9 /* AppDelegate.m */; };
-		ED5D1E07205CE70C0027FED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5D1E05205CE70C0027FED9 /* Main.storyboard */; };
 		ED5D1E09205CE70C0027FED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED5D1E08205CE70C0027FED9 /* Assets.xcassets */; };
 		ED5D1E0C205CE70C0027FED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED5D1E0A205CE70C0027FED9 /* LaunchScreen.storyboard */; };
 		ED5D1E0F205CE70C0027FED9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5D1E0E205CE70C0027FED9 /* main.m */; };
@@ -60,7 +59,6 @@
 		ED5D1DFC205CE70C0027FED9 /* hhru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hhru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED5D1DFF205CE70C0027FED9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED5D1E00205CE70C0027FED9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ED5D1E06205CE70C0027FED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED5D1E08205CE70C0027FED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED5D1E0B205CE70C0027FED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED5D1E0D205CE70C0027FED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				ED5D1E00205CE70C0027FED9 /* AppDelegate.m */,
 				ED5D1E25205CE8A50027FED9 /* App */,
 				ED5D1E24205CE8A40027FED9 /* Controllers */,
-				ED5D1E23205CE8A40027FED9 /* Storyboards */,
 				ED5D1E2A205CE8A50027FED9 /* Utils */,
 				ED5D1E29205CE8A50027FED9 /* Views */,
 				ED5D1E08205CE70C0027FED9 /* Assets.xcassets */,
@@ -202,14 +199,6 @@
 				ED5D1E1A205CE70C0027FED9 /* Info.plist */,
 			);
 			path = hhruTests;
-			sourceTree = "<group>";
-		};
-		ED5D1E23205CE8A40027FED9 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				ED5D1E05205CE70C0027FED9 /* Main.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		ED5D1E24205CE8A40027FED9 /* Controllers */ = {
@@ -401,7 +390,6 @@
 				EDDBD6DD205D36670042397D /* LoadingFooterView.xib in Resources */,
 				ED5D1E09205CE70C0027FED9 /* Assets.xcassets in Resources */,
 				EDDBD6D3205D016D0042397D /* VacancyTableCell.xib in Resources */,
-				ED5D1E07205CE70C0027FED9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,14 +555,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ED5D1E05205CE70C0027FED9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ED5D1E06205CE70C0027FED9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ED5D1E0A205CE70C0027FED9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -697,10 +677,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = hhru/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = narikbi.hhru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -711,10 +692,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = hhru/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = narikbi.hhru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

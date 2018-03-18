@@ -10,6 +10,24 @@
 
 @implementation Vacancy
 
+- (instancetype)initWithName:(NSString *)name
+                 publishedAt:(NSDate *)publishedAt
+                      salary:(Salary *)salary
+                        area:(Area *)area
+                    employer:(Employer *)employer
+{
+    self = [super init];
+    if (self) {
+        _name = name;
+        _publishedAt = publishedAt;
+        _salary = salary;
+        _area = area;
+        _employer = employer;
+    }
+    return self;
+}
+
+
 + (Vacancy *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Vacancy *instance = [[Vacancy alloc] init];

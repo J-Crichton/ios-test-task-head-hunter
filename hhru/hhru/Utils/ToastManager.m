@@ -1,6 +1,6 @@
 //
 //  ToastManager.m
-//  BaiBazar
+//  
 //
 
 #import "ToastManager.h"

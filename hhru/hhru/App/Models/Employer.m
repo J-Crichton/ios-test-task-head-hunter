@@ -10,6 +10,16 @@
 
 @implementation Employer
 
+- (instancetype)initWithEmpoyerId:(NSNumber *)empoyerId logo:(NSString *)logo name:(NSString *)name {
+    self = [super init];
+    if (self) {
+        _empoyerId = empoyerId;
+        _logo = logo;
+        _name = name;
+    }
+    return self;
+}
+
 + (Employer *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Employer *instance = [[Employer alloc] init];

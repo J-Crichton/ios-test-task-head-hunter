@@ -16,4 +16,7 @@
 + (Area *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
+- (instancetype)initWithAreaId:(NSNumber *)areaId name:(NSString *)name;
+
+
 @end

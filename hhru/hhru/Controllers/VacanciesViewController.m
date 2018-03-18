@@ -13,9 +13,10 @@
 #import "SVProgressHUD.h"
 #import "LoadingFooterView.h"
 #import "UIViewController+NoContent.h"
+#import "UIView+ConcisePureLayout.h"
+#import "PureLayout.h"
 
 @interface VacanciesViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation VacanciesViewController {
@@ -31,8 +32,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
     }
     return self;
 }
@@ -145,6 +144,10 @@
 }
 
 - (void)configUI {
+    
+    self.tableView = [UITableView newAutoLayoutView];
+    [self.view addSubview:self.tableView];
+    [self.tableView aa_superviewTop:0 left:0 bottom:0 right:0];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

@@ -1,12 +1,12 @@
 //
 //  ToastManager.h
-//  BaiBazar
+//  
 //
 
 #import <Foundation/Foundation.h>
 #import "CRToast.h"
 
-typedef void(^tapBlock)();
+typedef void(^tapBlock)(void);
 
 @interface ToastManager : NSObject
 
