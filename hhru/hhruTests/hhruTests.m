@@ -116,7 +116,6 @@
     Employer *employer1 = [[Employer alloc] initWithEmpoyerId:@1 logo:nil name:@"Яндекс"];
     
     Vacancy *vacancy1 = [[Vacancy alloc] initWithName:@"PHP программист" publishedAt:[NSDate date] salary:salary1 area:area1 employer:employer1];
- 
     NSString *expectedStr = @"500 - 1000 $・Москва";
     XCTAssertTrue([expectedStr isEqualToString: vacancy1.formattedSalaryArea]);
 
