@@ -41,6 +41,4 @@
     return (CGFloat) ([self screenWidth] * 0.5);
 }
 
-
-
 @end

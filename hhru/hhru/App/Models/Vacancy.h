@@ -31,5 +31,4 @@
 
 - (NSString *)formattedSalaryArea;
 
-
 @end

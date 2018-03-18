@@ -18,5 +18,4 @@
 
 - (instancetype)initWithAreaId:(NSNumber *)areaId name:(NSString *)name;
 
-
 @end

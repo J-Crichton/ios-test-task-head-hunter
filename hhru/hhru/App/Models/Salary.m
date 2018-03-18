@@ -66,7 +66,6 @@
     
     str = [str stringByAppendingString:@" "];
     str = [str stringByAppendingString:[self currencySymbol]];
-//    str = [str stringByAppendingString:@" "];
 
     return str;
 }
