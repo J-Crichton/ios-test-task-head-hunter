@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 struct Vacancy {
     var title: String
@@ -15,6 +16,24 @@ struct Vacancy {
     var salary: String?
     var logoURL: String?
     var image: UIImage?
+    
+    static func parseJSON(items: JSON) -> [Vacancy] {
+        var vacancies = [Vacancy]()
+        for i in 0...items.count - 1 {
+            let title = items[i]["name"].string!
+            let companyName = items[i]["employer"]["name"].string!
+            let logoURL = items[i]["employer"]["logo_urls"]["240"].string
+            var salaryString = "не указано"
+            if let salaryCurrency = items[i]["salary"]["currency"].string {
+                let salaryFrom = items[i]["salary"]["from"].int
+                let salaryTo = items[i]["salary"]["to"].int
+                let salary = Salary.init(from: salaryFrom, to: salaryTo, currency: salaryCurrency)
+                salaryString = salary.getSalaryString()
+            }
+            vacancies.append(Vacancy(title: title, companyName: companyName, salary: salaryString, logoURL: logoURL, image: nil))
+        }
+        return vacancies
+    }
 }
 
 struct Salary {

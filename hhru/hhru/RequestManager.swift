@@ -28,24 +28,6 @@ class RequestManager {
         self.baseURL = baseURL
     }
     
-    private func parseJSON(items: JSON) -> [Vacancy] {
-        var vacancies = [Vacancy]()
-        for i in 0...items.count - 1 {
-            let title = items[i]["name"].string!
-            let companyName = items[i]["employer"]["name"].string!
-            let logoURL = items[i]["employer"]["logo_urls"]["240"].string
-            var salaryString = "не указано"
-            if let salaryCurrency = items[i]["salary"]["currency"].string {
-                let salaryFrom = items[i]["salary"]["from"].int
-                let salaryTo = items[i]["salary"]["to"].int
-                let salary = Salary.init(from: salaryFrom, to: salaryTo, currency: salaryCurrency)
-                salaryString = salary.getSalaryString()
-            }
-            vacancies.append(Vacancy(title: title, companyName: companyName, salary: salaryString, logoURL: logoURL, image: nil))
-        }
-        return vacancies
-    }
-    
     func getVacancies(page:Int, success: @escaping (_ result: [Vacancy]) -> Void, failure: @escaping (_ result: Error) -> Void) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(baseURL + "vacancies?page=\(page)", method: .get).responseJSON { response in
@@ -54,7 +36,7 @@ class RequestManager {
                 let items = JSON(value)["items"]
                 let count = items.count
                 if count > 0 {
-                    let vacancies = self.parseJSON(items: items)
+                    let vacancies = Vacancy.parseJSON(items: items)
                     PKHUD.sharedHUD.hide()
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     success(vacancies)

@@ -39,7 +39,7 @@ class VacancyViewCell: UITableViewCell {
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
-        logoImageView.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        logoImageView.topAnchor.constraint(equalTo: marginGuide.topAnchor, constant: 4).isActive = true
         logoImageView.widthAnchor.constraint(equalToConstant: 64).isActive = true
         logoImageView.heightAnchor.constraint(equalToConstant: 64).isActive = true
         
@@ -51,16 +51,16 @@ class VacancyViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor, constant: 4).isActive = true
         
         companyNameLabel = UILabel()
         contentView.addSubview(companyNameLabel)
         companyNameLabel.backgroundColor = .white
-        companyNameLabel.font = UIFont.systemFont(ofSize: 15)
-        companyNameLabel.textColor = .lightGray
+        companyNameLabel.font = UIFont.systemFont(ofSize: 14)
+        companyNameLabel.textColor = .gray
         companyNameLabel.numberOfLines = 0
         companyNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        companyNameLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
+        companyNameLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6).isActive = true
         companyNameLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8).isActive = true
         companyNameLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         
@@ -69,19 +69,19 @@ class VacancyViewCell: UITableViewCell {
         salaryImageView.image = UIImage(named: "banknotes")
         salaryImageView.translatesAutoresizingMaskIntoConstraints = false
         salaryImageView.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8).isActive = true
-        salaryImageView.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 4).isActive = true
-        salaryImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        salaryImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        salaryImageView.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
+        salaryImageView.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 6).isActive = true
+        salaryImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        salaryImageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        salaryImageView.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor, constant: -6).isActive = true
         
         salaryLabel = UILabel()
         contentView.addSubview(salaryLabel)
         salaryLabel.backgroundColor = .white
-        salaryLabel.font = UIFont.systemFont(ofSize: 15)
+        salaryLabel.font = UIFont.systemFont(ofSize: 14)
         salaryLabel.textColor = .lightGray
         salaryLabel.translatesAutoresizingMaskIntoConstraints = false
-        salaryLabel.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 4).isActive = true
-        salaryLabel.leadingAnchor.constraint(equalTo: salaryImageView.trailingAnchor, constant: 4).isActive = true
+        salaryLabel.topAnchor.constraint(equalTo: companyNameLabel.bottomAnchor, constant: 6).isActive = true
+        salaryLabel.leadingAnchor.constraint(equalTo: salaryImageView.trailingAnchor, constant: 8).isActive = true
         salaryLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         
     }
